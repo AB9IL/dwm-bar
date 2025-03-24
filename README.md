@@ -1,6 +1,6 @@
 # dwm-bar
 A modular statusbar for dwm
-![screenshot](https://raw.githubusercontent.com/joestandring/dwm-bar/master/sshot.png)
+![screenshot](https://raw.githubusercontent.com/AB9IL/dwm-bar/main/sshot.png)
 ## Table of Contents
 - [Current Functions](#current-functions)
   - [dwm_alsa](#dwm_alsa)
@@ -178,7 +178,7 @@ $ cd dwm-bar
 ```
 2. Install Dependencies from dep/YourDisto.txt
 
-  * For Arch Linux 
+  * For Arch Linux
 
 ```
 $ sudo pacman -S $(dep/arch.txt)
