@@ -23,10 +23,10 @@ dwm_networkmanager() {
     [ -z "$WIFI" ] || WIFI="${color_fg_norm}${ICON2} $WIFI"
     [ -z "$WIFI" ] && WIFI="${color_fg_urgent}${ICON2} Down${color_fg_norm}"
 
-    PRIVATE=$(nmcli -a | grep 'inet4 192' | sed 's/\/.*//g' | awk '{print $2}')
-    [ -z "$PRIVATE" ] && PRIVATE="${color_fg_urgent}No IP${color_fg_norm}"
-    [ "$IDENTIFIER" = "unicode" ] && NET_DATA="${color_fg_norm}${SEP1} ${CONNAME},${WIFI}; ${PRIVATE} ${SPEED} ${SEP2}${color_reset}"
-    [ "$IDENTIFIER" = "unicode" ] || NET_DATA="${color_fg_norm}${SEP1} ${CONNAME},${WIFI}; ${PRIVATE} ${SPEED} ${SEP2}${color_reset}"
+    # PRIVATE=$(nmcli -a | grep 'inet4 192' | sed 's/\/.*//g' | awk '{print $2}')
+    # [ -z "$PRIVATE" ] && PRIVATE="${color_fg_urgent}No IP${color_fg_norm}"
+    [ "$IDENTIFIER" = "unicode" ] && NET_DATA="${color_fg_norm}${SEP1} ${CONNAME},${WIFI}; ${SPEED} ${SEP2}${color_reset}"
+    [ "$IDENTIFIER" = "unicode" ] || NET_DATA="${color_fg_norm}${SEP1} ${CONNAME},${WIFI}; ${SPEED} ${SEP2}${color_reset}"
     echo "$NET_DATA"
 }
 
