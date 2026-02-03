@@ -49,21 +49,22 @@ export SEP1=" "
 # . "$DIR/bar-functions/dwm_wpa.sh"
 
 # Update dwm status bar
-i=0
-j=0
 k=0
+# length of a full cycle of updates
+COUNT=12
+
+# set update interval
 INTERVAL=0.5
+HALF=$((COUNT / 2))
 while true
 do
 # functions to run at slow rate
-    [ $i = 0 ] && NETWORK="$(dwm_networkmanager)"
-    [ $i = 0 ] && BATT="$(dwm_battery)"
-    i=$((i + 1)) && [ "$i" -gt 10 ] && i=0
+    [ "$k" -eq 0 ] && NETWORK="$(dwm_networkmanager)"
+    [ "$k" -eq 0 ] && BATT="$(dwm_battery)"
 
 # functions to run at medium rate
-    [ $j = 0 ] && RESC="$(dwm_resources)"
-    [ $j = 0 ] && AUDIO="$(dwm_pipewire)"
-    j=$((j + 1)) && [ "$j" -gt 5 ] && j=0
+    [ "$k" -eq 0 ] || [ "$k" -eq "$HALF" ] && RESC="$(dwm_resources)"
+    [ "$k" -eq 0 ] || [ "$k" -eq "$HALF" ] && AUDIO="$(dwm_pipewire)"
 
 # functions to run at fastest rate:
     TIME="$(dwm_date)"
@@ -117,6 +118,6 @@ do
 #    xsetroot -name "$upperbar;$lowerbar"
     # Update rate is 1 / sleep interval
     sleep $INTERVAL
-    k=$((k + 1)) && [ "$k" -gt 5 ] && k=0
+    k=$((k + 1)) && [ "$k" -gt 9 ] && k=0
     xsetroot -name "$upperbar"
 done
